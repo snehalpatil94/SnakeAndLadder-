@@ -1,8 +1,7 @@
 package com.bridgelabz.snakeladder;
 
 /**
- * Program for The Player then checks for a Option. They are No Play,Ladder or
- * Snake.
+ * Program to Repeat process till the Player reaches the winning position 100.
  * 
  * @author : Snehal Patil
  *
@@ -18,38 +17,47 @@ public class SnakeLadder {
 
 	/*
 	 * Using ((RANDOM)) to check for Options.1 = ladder & 2 = snake & 0 = no play.
-	 */
-	public static void playerOption() {
+	 * 
+	 * Repeat till the Player reaches the winning position 100. In case the player
+	 * position moves below 0, then the player restarts from 0
+	 * 
+	 */ public static void playerOption() {
 		int position = 0;
 
-		int check = (int) (Math.random() * 10) % 3 + 1;
-		System.out.println("Playing Option :" + check);
+		while (position < 100) {
+			int check = (int) (Math.random() * 10) % 3 + 1;
+			System.out.println();
+			System.out.println("Playing Option :" + check);
 
-		switch (check) {
+			switch (check) {
+			case 1:
+				System.out.println("player is not playing ");
+				System.out.println("player Reamain at position : " + position);
+				break;
 
-		case 1:
-			System.out.println("player is not playing " );
-			break;
+			case 2:
+				int dice = rollDice();
+				System.out.println("Dice Rolled... " + dice);
+				position = position + dice;
+				System.out.println("Its Ladder....");
+				System.out.println("player is playing at position : " + position);
+				break;
 
-		case 2:
-			int dice = rollDice();
-			System.out.println("Dice Rolled... " + dice);
-			position = position + dice;
-			System.out.println("Its Ladder....");
-			System.out.println("player is playing at : " + position);
-			break;
-
-		default:
-			int dice2 = rollDice();
-			System.out.println("Dice Rolled.... " + dice2);
-			position = position - dice2;
-			System.out.println("Ohhhh....its Snake");
-			System.out.println("player position : " + position);
+			default:
+				int dice2 = rollDice();
+				System.out.println("Dice Rolled.... " + dice2);
+				position = position - dice2;
+				System.out.println("Ohhhh....its Snake");
+				if (position < 1) {
+					position = 0;
+				}
+				System.out.println("player position : " + position);
+			}
 		}
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Lets play");
+		System.out.println("Lets play...");
 		playerOption();
 	}
 }

@@ -1,7 +1,7 @@
 package com.bridgelabz.snakeladder;
 
 /**
- * Program to Repeat process till the Player reaches the winning position 100.
+ * Program to Ensure the player gets to exact winning position 100..
  * 
  * @author : Snehal Patil
  *
@@ -16,12 +16,13 @@ public class SnakeLadder {
 	}
 
 	/*
-	 * Using ((RANDOM)) to check for Options.1 = ladder & 2 = snake & 0 = no play.
+	 * Using ((RANDOM)) to check for Options.1 = no play & 2 = ladder & 0 = snake.
 	 * 
-	 * Repeat till the Player reaches the winning position 100. In case the player
-	 * position moves below 0, then the player restarts from 0
+	 * Repeat till the Player reaches at exact winning position 100. In case the
+	 * player position moves below 0, then the player restarts from 0 .
 	 * 
-	 */ public static void playerOption() {
+	 */
+	public static void playerOption() {
 		int position = 0;
 
 		while (position < 100) {
@@ -32,7 +33,7 @@ public class SnakeLadder {
 			switch (check) {
 			case 1:
 				System.out.println("player is not playing ");
-				System.out.println("player Reamain at position : " + position);
+				System.out.println("Player remain at position : " + position);
 				break;
 
 			case 2:
@@ -40,7 +41,10 @@ public class SnakeLadder {
 				System.out.println("Dice Rolled... " + dice);
 				position = position + dice;
 				System.out.println("Its Ladder....");
-				System.out.println("player is playing at position : " + position);
+				if (position > 100) {
+					position = position - dice;
+				}
+				System.out.println("player is playing at : " + position);
 				break;
 
 			default:

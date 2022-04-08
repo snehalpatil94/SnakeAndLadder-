@@ -1,17 +1,21 @@
 package com.bridgelabz.snakeladder;
 
 /**
- * Program to Ensure the player gets to exact winning position 100..
+ * Program to Report the number of times the dice was played to win the game and
+ * also the position after every die role
  * 
  * @author : Snehal Patil
  *
  */
 public class SnakeLadder {
+	static int counter = 0;
+
 	/*
 	 * In this method we are taking random no between 1 to 6 for rolling dice
 	 */
 	public static int rollDice() {
 		int dice = (int) (Math.random() * 10) % 6 + 1;
+		counter++;
 		return dice;
 	}
 
@@ -20,6 +24,8 @@ public class SnakeLadder {
 	 * 
 	 * Repeat till the Player reaches at exact winning position 100. In case the
 	 * player position moves below 0, then the player restarts from 0 .
+	 * 
+	 * Count how many times dice is rolled.
 	 * 
 	 */
 	public static void playerOption() {
@@ -63,5 +69,6 @@ public class SnakeLadder {
 	public static void main(String[] args) {
 		System.out.println("Lets play...");
 		playerOption();
+		System.out.println("Total Count to Win the Game : " + counter);
 	}
 }
